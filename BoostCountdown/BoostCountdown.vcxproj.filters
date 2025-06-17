@@ -78,6 +78,9 @@
     <ClCompile Include="BoostCountdown.cpp">
       <Filter>Plugin\src</Filter>
     </ClCompile>
+    <ClCompile Include="BoostCountdownSettings.cpp">
+      <Filter>Plugin\src</Filter>
+    </ClCompile>
     <ClCompile Include="GuiBase.cpp">
       <Filter>Plugin\src</Filter>
     </ClCompile>
