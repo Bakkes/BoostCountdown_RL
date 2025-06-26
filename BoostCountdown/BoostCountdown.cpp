@@ -138,7 +138,7 @@ bool BoostCountdown::isOnScreen(Vector camera, Vector camPos, Vector UIPos) {
 	}
 	Vector vecToUI = Vector{ camPos - UIPos }.getNormalized();
 	float viewToUIAng = acos(Vector::dot(camera, vecToUI) / camera.magnitude() * vecToUI.magnitude());
-	LOG(to_string(viewToUIAng));
+	//LOG(to_string(viewToUIAng));
 	if (3.1415 - viewToUIAng <= fov) {
 		return true;
 	}
