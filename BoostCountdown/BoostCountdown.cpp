@@ -30,7 +30,7 @@ void BoostCountdown::onLoad()
 		int close = GetClosestPad(loc);
 
 		if (close != -1) {
-			ServerWrapper server = gameWrapper->GetCurrentGameState();
+			ServerWrapper server = gameWrapper->GetGameEventAsServer();
 			if (!server) { return; }
 			time.at(close) = server.GetSecondsElapsed();
 		}
@@ -48,7 +48,7 @@ void BoostCountdown::onLoad()
 }
 
 void BoostCountdown::Countdown(int padID) {
-	ServerWrapper server = gameWrapper->GetCurrentGameState();
+	ServerWrapper server = gameWrapper->GetGameEventAsServer();
 	if (!server) { return; }
 	float start = server.GetSecondsElapsed();
 	float end = start + 10.0;
@@ -75,11 +75,7 @@ int BoostCountdown::GetClosestPad(Vector loc) {
 
 void BoostCountdown::Render(CanvasWrapper canvas)
 {
-	if (gameWrapper->IsInOnlineGame())
-	{
-		return;
-	}
-	ServerWrapper server = gameWrapper->GetCurrentGameState();
+	ServerWrapper server = gameWrapper->GetGameEventAsServer();
 	if (!server) { return; }
 	CameraWrapper camera = gameWrapper->GetCamera();
 
@@ -132,10 +128,6 @@ void BoostCountdown::Render(CanvasWrapper canvas)
 
 
 bool BoostCountdown::isOnScreen(Vector camera, Vector camPos, Vector UIPos) {
-	if (gameWrapper->IsInOnlineGame())
-	{
-		return;
-	}
 	Vector vecToUI = Vector{ camPos - UIPos }.getNormalized();
 	float viewToUIAng = acos(Vector::dot(camera, vecToUI) / camera.magnitude() * vecToUI.magnitude());
 	//LOG(to_string(viewToUIAng));
