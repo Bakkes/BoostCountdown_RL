@@ -117,7 +117,7 @@ void BoostCountdown::Render(CanvasWrapper canvas)
 					pos.X -= textSize.X / 2;
 					pos.Y -= textSize.Y / 2;
 
-					CVarWrapper col = cvarManager->getCvar("ui_color");
+					CVarWrapper col = cvarManager->getCvar("boostcountdown_ui_color");
 					canvas.SetColor(col.getColorValue());
 
 					canvas.SetPosition(pos);
