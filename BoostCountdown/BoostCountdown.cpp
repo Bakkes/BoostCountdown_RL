@@ -19,9 +19,9 @@ void BoostCountdown::onLoad()
 		Render(canvas);
 		});
 
-	cvarManager->registerCvar("enable", "0", "Enables the plugin", true, true, 0, true, 1, false).bindTo(enable);
-	cvarManager->registerCvar("ui_color", "#FFFF00FF", "color of background", true, false, 0, false, 0, true);
-	cvarManager->registerCvar("scale", "5", "scale of ui", true, true, 1, true, 10, true).bindTo(scale_UI);
+	cvarManager->registerCvar("boostcountdown_enable", "0", "Enables the plugin", true, true, 0, true, 1, false).bindTo(enable);
+	cvarManager->registerCvar("boostcountdown_ui_color", "#FFFF00FF", "color of background", true, false, 0, false, 0, true);
+	cvarManager->registerCvar("boostcountdown_scale", "5", "scale of ui", true, true, 1, true, 10, true).bindTo(scale_UI);
 
 	gameWrapper->HookEventWithCaller<CarWrapper>("Function TAGame.VehiclePickup_TA.OnPickUp", [this](CarWrapper caller, void* params, std::string eventName) {
 		if (!*enable) {return;}
