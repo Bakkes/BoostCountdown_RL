@@ -75,6 +75,10 @@ int BoostCountdown::GetClosestPad(Vector loc) {
 
 void BoostCountdown::Render(CanvasWrapper canvas)
 {
+	if (gameWrapper->IsInOnlineGame())
+	{
+		return;
+	}
 	ServerWrapper server = gameWrapper->GetCurrentGameState();
 	if (!server) { return; }
 	CameraWrapper camera = gameWrapper->GetCamera();
@@ -128,6 +132,10 @@ void BoostCountdown::Render(CanvasWrapper canvas)
 
 
 bool BoostCountdown::isOnScreen(Vector camera, Vector camPos, Vector UIPos) {
+	if (gameWrapper->IsInOnlineGame())
+	{
+		return;
+	}
 	Vector vecToUI = Vector{ camPos - UIPos }.getNormalized();
 	float viewToUIAng = acos(Vector::dot(camera, vecToUI) / camera.magnitude() * vecToUI.magnitude());
 	LOG(to_string(viewToUIAng));
